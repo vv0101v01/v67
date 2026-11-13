@@ -1,0 +1,131 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/core"
+
+// Values
+pub fn fp_add(Int32, Int32, Int32) -> Int32
+
+pub fn fp_det(Array[Array[Int32]], Int32) -> Int32
+
+pub fn fp_homology_dim(Array[Array[Int32]], Array[Array[Int32]], Int32) -> Int32
+
+pub fn fp_image(Array[Array[Int32]], Int32) -> Array[Array[Int32]]
+
+pub fn fp_in_row_span(Array[Array[Int32]], Array[Int32], Int32) -> Bool
+
+pub fn fp_inv(Int32, Int32) -> Int32
+
+pub fn fp_is_consistent(Array[Array[Int32]], Array[Int32], Int32) -> Bool
+
+pub fn fp_kernel(Array[Array[Int32]], Int32) -> Array[Array[Int32]]
+
+pub fn fp_kernel_cols(Array[Array[Int32]], Int32, Int32) -> Array[Array[Int32]]
+
+pub fn fp_mat_eq(Array[Array[Int32]], Array[Array[Int32]]) -> Bool
+
+pub fn fp_mat_zero(Int32, Int32) -> Array[Array[Int32]]
+
+pub fn fp_matadd(Array[Array[Int32]], Array[Array[Int32]], Int32) -> Array[Array[Int32]]
+
+pub fn fp_matmul(Array[Array[Int32]], Array[Array[Int32]], Int32) -> Array[Array[Int32]]
+
+pub fn fp_mul(Int32, Int32, Int32) -> Int32
+
+pub fn fp_norm(Int32, Int32) -> Int32
+
+pub fn fp_rank(Array[Array[Int32]], Int32) -> Int32
+
+pub fn fp_rref(Array[Array[Int32]], Int32) -> (Array[Array[Int32]], Array[Int32], Int32)
+
+pub fn fp_solve(Array[Array[Int32]], Array[Int32], Int32) -> Array[Int32]?
+
+pub fn fp_sub(Int32, Int32, Int32) -> Int32
+
+pub fn ints_to_s(Array[Int32]) -> String
+
+pub fn ipow(Int32, Int32) -> Int32
+
+pub fn ipow2(Int32) -> Int32
+
+pub fn mul_scalar_reference(BoolMat, BoolMat) -> BoolMat
+
+pub fn popcount64(UInt64) -> Int32
+
+pub fn rank(Array[Bits], Int32) -> Int32
+
+pub fn rank_mat(BoolMat) -> Int32
+
+pub fn trailing_zeros64(UInt64) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct Bits {
+  words : Array[UInt64]
+  n : Int32
+}
+pub fn Bits::clear_bit(Self, Int32) -> Unit
+pub fn Bits::copy(Self) -> Self
+pub fn Bits::first_set(Self) -> Int32?
+pub fn Bits::flip(Self, Int32) -> Unit
+pub fn Bits::get(Self, Int32) -> Bool
+pub fn Bits::is_zero(Self) -> Bool
+pub fn Bits::length(Self) -> Int32
+pub fn Bits::new(Int32) -> Self
+pub fn Bits::or_inplace(Self, Self) -> Unit
+pub fn Bits::same(Self, Self) -> Bool
+pub fn Bits::set(Self, Int32) -> Unit
+pub fn Bits::weight(Self) -> Int32
+pub fn Bits::xor(Self, Self) -> Self
+pub fn Bits::xor_inplace(Self, Self) -> Unit
+
+pub struct BoolMat {
+  rows : Array[Bits]
+  ncols : Int32
+}
+pub fn BoolMat::column(Self, Int32) -> Bits
+pub fn BoolMat::get(Self, Int32, Int32) -> Bool
+pub fn BoolMat::identity(Int32) -> Self
+pub fn BoolMat::mul(Self, Self) -> Self
+pub fn BoolMat::mul_or(Self, Self) -> Self
+pub fn BoolMat::new(Array[Bits], Int32) -> Self
+pub fn BoolMat::nrows(Self) -> Int32
+pub fn BoolMat::transpose(Self) -> Self
+pub fn BoolMat::zero(Int32, Int32) -> Self
+
+pub struct ChainComplex {
+  dims : Array[Int32]
+  boundaries : Array[Array[Bits]]
+}
+pub fn ChainComplex::betti(Self) -> Array[Int32]
+pub fn ChainComplex::check_d2(Self) -> Bool
+pub fn ChainComplex::euler(Self) -> Int32
+pub fn ChainComplex::new(Array[Int32], Array[Array[Bits]]) -> Self
+pub fn ChainComplex::profile(Self) -> String
+pub fn ChainComplex::rank_at(Self, Int32) -> Int32
+pub fn ChainComplex::top(Self) -> Int32
+pub fn ChainComplex::total_dim(Self) -> Int32
+
+pub struct FilteredCell {
+  dim : Int32
+  birth : Int32
+  boundary : Array[Int32]
+}
+pub fn FilteredCell::new(Int32, Int32, Array[Int32]) -> Self
+
+pub struct Filtration {
+  cells : Array[FilteredCell]
+}
+pub fn Filtration::betti_at(Self, Int32) -> Array[Int32]
+pub fn Filtration::diagram(Self) -> String
+pub fn Filtration::new(Array[FilteredCell]) -> Self
+pub fn Filtration::persistence(Self) -> Array[PersistencePair]
+
+pub struct PersistencePair {
+  dim : Int32
+  birth : Int32
+  death : Int32?
+}
+
+// Type aliases
+
+// Traits

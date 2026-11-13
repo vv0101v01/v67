@@ -1,0 +1,128 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/deform"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn alg_dual_numbers(Int32) -> Alg
+
+pub fn alg_field(Int32) -> Alg
+
+pub fn alg_product(Int32) -> Alg
+
+pub fn alg_truncated(Int32, Int32) -> Alg
+
+pub fn artin_ring(Int32, Int32) -> Artin
+
+pub fn regular_module(Alg) -> ModRep
+
+pub fn small_extension(Int32, Int32) -> SmallExtension
+
+pub fn trivial_tower(ModRep, Int32, Int32) -> ModTower
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Alg {
+  dim : Int32
+  p : Int32
+  c : Array[Array[Array[Int32]]]
+}
+pub fn Alg::check_d2(Self, Int32) -> Bool
+pub fn Alg::cochain_dim(Self, Int32) -> Int32
+pub fn Alg::equal(Self, Self) -> Bool
+pub fn Alg::extends_to_order2(Self, Array[Array[Array[Int32]]]) -> Bool
+pub fn Alg::first_order_space(Self) -> Array[Array[Array[Array[Int32]]]]
+pub fn Alg::gerstenhaber_obstruction(Self, Array[Array[Array[Int32]]]) -> Array[Int32]
+pub fn Alg::hh_dim(Self, Int32) -> Int32
+pub fn Alg::hochschild_diff(Self, Int32) -> Array[Array[Int32]]
+pub fn Alg::is_associative(Self) -> Bool
+pub fn Alg::is_commutative(Self) -> Bool
+pub fn Alg::mul_basis(Self, Int32, Int32) -> Array[Int32]
+pub fn Alg::new(Int32, Int32, Array[Array[Array[Int32]]]) -> Self
+pub fn Alg::not_equal(Self, Self) -> Bool
+pub fn Alg::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Artin {
+  p : Int32
+  n : Int32
+}
+pub fn Artin::add(Self, Array[Int32], Array[Int32]) -> Array[Int32]
+pub fn Artin::equal(Self, Self) -> Bool
+pub fn Artin::from_int(Self, Int32) -> Array[Int32]
+pub fn Artin::inv(Self, Array[Int32]) -> Array[Int32]?
+pub fn Artin::is_unit(Self, Array[Int32]) -> Bool
+pub fn Artin::lift_zero(Self, Array[Int32], Int32) -> Array[Int32]
+pub fn Artin::mul(Self, Array[Int32], Array[Int32]) -> Array[Int32]
+pub fn Artin::neg(Self, Array[Int32]) -> Array[Int32]
+pub fn Artin::new(Int32, Int32) -> Self
+pub fn Artin::not_equal(Self, Self) -> Bool
+pub fn Artin::one(Self) -> Array[Int32]
+pub fn Artin::residue(Self, Array[Int32]) -> Int32
+pub fn Artin::to_repr(Self) -> @debug.Repr
+pub fn Artin::truncate(Self, Array[Int32], Int32) -> Array[Int32]
+pub fn Artin::uniformiser(Self) -> Array[Int32]
+pub fn Artin::valuation(Self, Array[Int32]) -> Int32
+pub fn Artin::zero(Self) -> Array[Int32]
+
+#derive(Eq, @debug.Debug)
+pub struct ModDeform {
+  alg : Alg
+  ring : Artin
+  dim : Int32
+  act : Array[Array[Array[Array[Int32]]]]
+}
+pub fn ModDeform::check(Self) -> Bool
+pub fn ModDeform::equal(Self, Self) -> Bool
+pub fn ModDeform::first_order(Self) -> Array[Array[Array[Int32]]]?
+pub fn ModDeform::not_equal(Self, Self) -> Bool
+pub fn ModDeform::to_repr(Self) -> @debug.Repr
+pub fn ModDeform::truncate(Self, Int32) -> Self
+
+#derive(Eq, @debug.Debug)
+pub struct ModRep {
+  alg : Alg
+  dim : Int32
+  act : Array[Array[Array[Int32]]]
+}
+pub fn ModRep::check(Self) -> Bool
+pub fn ModRep::check_d2(Self) -> Bool
+pub fn ModRep::cocycle_basis(Self) -> Array[Array[Array[Array[Int32]]]]
+pub fn ModRep::constant_deform(Self, Artin) -> ModDeform
+pub fn ModRep::deform_by(Self, Array[Array[Array[Int32]]]) -> ModDeform?
+pub fn ModRep::delta0(Self) -> Array[Array[Int32]]
+pub fn ModRep::delta1(Self) -> Array[Array[Int32]]
+pub fn ModRep::equal(Self, Self) -> Bool
+pub fn ModRep::ext0(Self) -> Int32
+pub fn ModRep::ext1(Self) -> Int32
+pub fn ModRep::new(Alg, Int32, Array[Array[Array[Int32]]]) -> Self
+pub fn ModRep::not_equal(Self, Self) -> Bool
+pub fn ModRep::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct ModTower {
+  stages : Array[ModDeform]
+}
+pub fn ModTower::check(Self) -> Bool
+pub fn ModTower::height(Self) -> Int32
+pub fn ModTower::new(Array[ModDeform]) -> Self
+pub fn ModTower::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct SmallExtension {
+  base : Artin
+  total : Artin
+  kernel_dim : Int32
+}
+pub fn SmallExtension::check(Self) -> Bool
+pub fn SmallExtension::equal(Self, Self) -> Bool
+pub fn SmallExtension::not_equal(Self, Self) -> Bool
+pub fn SmallExtension::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

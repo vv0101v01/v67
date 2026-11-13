@@ -1,0 +1,119 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/fiber"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn classical_fiber_dim(MonomialIdeal, MonomialIdeal, Monomials) -> Int32
+
+pub fn derived_fiber(MonomialIdeal, MonomialIdeal, Monomials, Int32) -> DerivedFiber
+
+pub fn monomial_degree(Array[Int32]) -> Int32
+
+pub fn monomial_divides(Array[Int32], Array[Int32]) -> Bool
+
+pub fn monomial_ideal(Array[Array[Int32]]) -> MonomialIdeal
+
+pub fn monomial_lcm(Array[Int32], Array[Int32]) -> Array[Int32]
+
+pub fn monomial_quotient(Array[Int32], Array[Int32]) -> Array[Int32]
+
+pub fn quotient(Monomials, MonomialIdeal, Int32) -> Quotient
+
+pub fn taylor(Array[Array[Int32]]) -> Taylor
+
+pub fn tor_complex(Taylor, Quotient) -> TorComplex
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct DerivedFiber {
+  tor : Array[Int32]
+  classical : Int32
+  serre : Int32
+  transverse : Bool
+  d2_ok : Bool
+}
+pub fn DerivedFiber::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct MonomialIdeal {
+  gens : Array[Array[Int32]]
+}
+pub fn MonomialIdeal::contains(Self, Array[Int32]) -> Bool
+pub fn MonomialIdeal::equal(Self, Self) -> Bool
+pub fn MonomialIdeal::not_equal(Self, Self) -> Bool
+pub fn MonomialIdeal::standard(Self, Monomials) -> Array[Int32]
+pub fn MonomialIdeal::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Monomials {
+  nvars : Int32
+  deg_bound : Int32
+  exps : Array[Array[Int32]]
+  degs : Array[Int32]
+}
+pub fn Monomials::degree(Self, Int32) -> Int32
+pub fn Monomials::equal(Self, Self) -> Bool
+pub fn Monomials::index_of(Self, Array[Int32]) -> Int32
+pub fn Monomials::new(Int32, Int32) -> Self
+pub fn Monomials::not_equal(Self, Self) -> Bool
+pub fn Monomials::shift(Self, Int32, Array[Int32]) -> Int32
+pub fn Monomials::size(Self) -> Int32
+pub fn Monomials::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Quotient {
+  ms : Monomials
+  ideal : MonomialIdeal
+  basis : Array[Int32]
+  p : Int32
+}
+pub fn Quotient::dim(Self) -> Int32
+pub fn Quotient::equal(Self, Self) -> Bool
+pub fn Quotient::hilbert(Self) -> Array[Int32]
+pub fn Quotient::mul_matrix(Self, Array[Int32]) -> Array[Array[Int32]]
+pub fn Quotient::not_equal(Self, Self) -> Bool
+pub fn Quotient::position(Self, Int32) -> Int32
+pub fn Quotient::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Taylor {
+  gens : Array[Array[Int32]]
+  lcms : Array[Array[Array[Int32]]]
+}
+pub fn Taylor::rank_at(Self, Int32) -> Int32
+pub fn Taylor::to_repr(Self) -> @debug.Repr
+pub fn Taylor::top(Self) -> Int32
+
+#derive(Eq, @debug.Debug)
+pub struct TorBasis {
+  subset : Int32
+  mono : Int32
+  degree : Int32
+}
+pub fn TorBasis::equal(Self, Self) -> Bool
+pub fn TorBasis::not_equal(Self, Self) -> Bool
+pub fn TorBasis::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct TorComplex {
+  levels : Array[Array[TorBasis]]
+  diffs : Array[Array[Array[Int32]]]
+  deg_bound : Int32
+  p : Int32
+}
+pub fn TorComplex::check_d2(Self) -> Bool
+pub fn TorComplex::level_dim(Self, Int32) -> Int32
+pub fn TorComplex::serre_multiplicity(Self) -> Int32
+pub fn TorComplex::to_repr(Self) -> @debug.Repr
+pub fn TorComplex::tor_dim(Self, Int32) -> Int32
+pub fn TorComplex::tor_dims(Self) -> Array[Int32]
+pub fn TorComplex::tor_graded(Self, Int32) -> Array[Int32]
+
+// Type aliases
+
+// Traits

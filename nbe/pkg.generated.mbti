@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/nbe"
+
+import {
+  "arena/moonmath/cubical",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn apply(Value, Value) -> Value
+
+pub fn assignment(Int32, Int32) -> Array[Bool]
+
+pub fn beta_equal(Array[Ty], Term, Term) -> Bool
+
+pub fn beta_eta_equal(Array[Ty], Term, Term) -> Bool
+
+pub fn beta_nf(Term) -> Term
+
+pub fn bool_ctx(Int32) -> Array[Ty]
+
+pub fn concrete_env(Array[Bool]) -> Array[Value]
+
+pub fn eta_contract(Term) -> Term
+
+pub fn eval(Array[Value], Term) -> Value
+
+pub fn extensional_equal_bool(Term, Term) -> Bool
+
+pub fn feasible_leaves(Symbolic, Array[Leaf]) -> Array[Leaf]
+
+pub fn guard_dm_eq(@cubical.Dim, @cubical.Dim) -> Bool
+
+pub fn guard_holds(@cubical.Dim, Array[Bool]) -> Bool
+
+pub fn normalize(Array[Ty], Term) -> Term
+
+pub fn normalize_closed(Term) -> Term
+
+pub fn normalize_eta(Array[Ty], Term) -> Term
+
+pub fn reify(Int32, Value) -> Term
+
+pub fn symbolic_env(Int32) -> Array[Value]
+
+pub fn whnf(Term) -> Term
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Leaf {
+  path_cond : @cubical.Dim
+  value : Value
+}
+pub fn Leaf::equal(Self, Self) -> Bool
+pub fn Leaf::new(@cubical.Dim, Value) -> Self
+pub fn Leaf::not_equal(Self, Self) -> Bool
+pub fn Leaf::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Neutral {
+  NVar(Int32)
+  NApp(Neutral, Value)
+  NIf(Value, Value, Value)
+  NAdd(Value, Value)
+  NIsZero(Value)
+}
+pub fn Neutral::equal(Self, Self) -> Bool
+pub fn Neutral::not_equal(Self, Self) -> Bool
+pub fn Neutral::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Symbolic {
+  nvars : Int32
+  mut next : Int32
+  opaque_atoms : Map[String, Int32]
+}
+pub fn Symbolic::check_partition(Self, Term) -> Bool
+pub fn Symbolic::check_sound(Self, Term) -> (Int32, Int32)
+pub fn Symbolic::check_sound_leaves(Self, Term, Array[Leaf]) -> (Int32, Int32)
+pub fn Symbolic::check_sound_nbe(Self, Term) -> (Int32, Int32)
+pub fn Symbolic::cond_of(Self, Value) -> @cubical.Dim
+pub fn Symbolic::equal(Self, Self) -> Bool
+pub fn Symbolic::exec(Self, Array[Value], Term, @cubical.Dim) -> Array[Leaf]
+pub fn Symbolic::feasible(Self, @cubical.Dim) -> Bool
+pub fn Symbolic::guard_equiv(Self, @cubical.Dim, @cubical.Dim) -> Bool
+pub fn Symbolic::leaves(Self, Value, @cubical.Dim) -> Array[Leaf]
+pub fn Symbolic::model_count(Self, @cubical.Dim) -> Int32
+pub fn Symbolic::natoms(Self) -> Int32
+pub fn Symbolic::new(Int32) -> Self
+pub fn Symbolic::not_equal(Self, Self) -> Bool
+pub fn Symbolic::run(Self, Term) -> Array[Leaf]
+pub fn Symbolic::run_nbe(Self, Term) -> Array[Leaf]
+pub fn Symbolic::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Term {
+  Var(Int32)
+  Lam(Ty, Term)
+  App(Term, Term)
+  BoolLit(Bool)
+  NatLit(Int32)
+  If(Term, Term, Term)
+  Add(Term, Term)
+  IsZero(Term)
+}
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::free_vars(Self) -> Int32
+pub fn Term::infer(Self, Array[Ty]) -> Ty?
+pub fn Term::key(Self) -> String
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::size(Self) -> Int32
+pub fn Term::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Ty {
+  Bool
+  Nat
+  Arrow(Ty, Ty)
+}
+pub fn Ty::equal(Self, Self) -> Bool
+pub fn Ty::key(Self) -> String
+pub fn Ty::not_equal(Self, Self) -> Bool
+pub fn Ty::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Value {
+  VBool(Bool)
+  VNat(Int32)
+  VLam(Ty, Array[Value], Term)
+  VNe(Neutral)
+}
+pub fn Value::equal(Self, Self) -> Bool
+pub fn Value::not_equal(Self, Self) -> Bool
+pub fn Value::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

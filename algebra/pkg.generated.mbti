@@ -1,0 +1,112 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/algebra"
+
+import {
+  "arena/moonmath/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_heisenberg_commutator(Int32, Int32, Int32) -> Bool
+
+pub fn dist_list_option(Array[Int32?]) -> Array[Int32]?
+
+pub fn e_betti(Int32, Int32) -> Array[Int32]
+
+pub fn e_complex(Int32, Int32) -> @core.ChainComplex
+
+pub fn e_word_count(Int32, Int32) -> Int32
+
+pub fn e_words(Int32, Int32) -> Array[Array[Int32]]
+
+pub fn exterior_algebra() -> AInf
+
+pub fn fock_states(Int32) -> Array[Array[Int32]]
+
+pub fn fold(Algebra, Term) -> Int32
+
+pub fn free_einfty_dims(Int32, Int32) -> Array[Int32]
+
+pub fn heisenberg_character(Int32) -> Array[Int32]
+
+pub fn heisenberg_matrix(Int32, Int32, Int32) -> Array[Array[Int32]]
+
+pub fn join(Term) -> Term
+
+pub fn line_dga() -> AInf
+
+pub fn optimize(Algebra, Term) -> Term
+
+pub fn partition_numbers(Int32) -> Array[Int32]
+
+pub fn pure(Int32) -> Term
+
+pub fn rank_variety_stats(ExtModule, Int32) -> (Int32, Int32)
+
+pub fn regular_ext_module(Int32) -> ExtModule
+
+pub fn subst_cost(Term, Array[Term]) -> Int32
+
+pub fn trivial_ext_module(Int32) -> ExtModule
+
+pub fn truncated_polynomial() -> AInf
+
+pub fn wick_brute(Array[Int32], Array[Array[Int32]], Int32) -> Int32
+
+pub fn wick_dp(Int32, Array[Array[Int32]], Int32) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct AInf {
+  space : GradedSpace
+  m1 : Array[@core.Bits]
+  m2 : Array[Array[@core.Bits]]
+  m3 : Array[Array[Array[@core.Bits]]]
+}
+pub fn AInf::check_all(Self) -> Bool
+pub fn AInf::check_degrees(Self) -> Bool
+pub fn AInf::check_derivation(Self) -> Bool
+pub fn AInf::check_m1sq(Self) -> Bool
+pub fn AInf::check_stasheff3(Self) -> Bool
+pub fn AInf::set_m1(Self, Int32, Int32) -> Unit
+pub fn AInf::set_m2(Self, Int32, Int32, Int32) -> Unit
+pub fn AInf::set_m3(Self, Int32, Int32, Int32, Int32) -> Unit
+pub fn AInf::zero(GradedSpace) -> Self
+
+pub struct Algebra {
+  carrier_size : Int32
+  ops : Array[(Array[Int32]) -> Int32]
+}
+pub fn Algebra::new(Int32, Array[(Array[Int32]) -> Int32]) -> Self
+
+pub struct ExtModule {
+  n : Int32
+  dim : Int32
+  gens : Array[Array[Array[Int32]]]
+}
+
+pub struct GradedSpace {
+  dims : Array[Int32]
+  offsets : Array[Int32]
+  total : Int32
+}
+pub fn GradedSpace::degree(Self, Int32) -> Int32
+pub fn GradedSpace::new(Array[Int32]) -> Self
+
+#derive(Eq, @debug.Debug)
+pub enum Term {
+  Var(Int32)
+  Lit(Int32)
+  Node(Int32, Array[Term])
+}
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::map_vars(Self, (Int32) -> Int32) -> Self
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::size(Self) -> Int32
+pub fn Term::subst(Self, Array[Self]) -> Self
+pub fn Term::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,249 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/cubical"
+
+import {
+  "arena/moonmath/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn all_permutations(Int32) -> Array[Array[Int32]]
+
+pub fn all_res_bijective(CubeTy) -> Bool
+
+pub fn check_glue_data(Cof, CubeTy, CubeTy, Array[Array[Int32]]) -> Bool
+
+pub fn check_partial(CubeTy, PartialElem) -> Bool
+
+pub fn check_ty_iso(CubeTy, CubeTy, TyIso) -> Bool
+
+pub fn check_ua_beta(Iso) -> Bool
+
+pub fn check_ua_eta(CubeTy) -> Bool
+
+pub fn cof_and(Cof, Cof) -> Cof
+
+pub fn cof_entails(Cof, Cof, Int32) -> Bool
+
+pub fn cof_equiv(Cof, Cof, Int32) -> Bool
+
+pub fn cof_extent_size(Cof, Int32) -> Int32
+
+pub fn cof_faces(Cof) -> Array[Array[Int32]]
+
+pub fn cof_is_bot(Cof, Int32) -> Bool
+
+pub fn cof_is_false(Cof) -> Bool
+
+pub fn cof_is_top(Cof, Int32) -> Bool
+
+pub fn cof_is_true(Cof) -> Bool
+
+pub fn cof_leq(Cof, Cof) -> Bool
+
+pub fn cof_maximal_faces(Cof, Int32) -> Array[Int32]
+
+pub fn cof_or(Cof, Cof) -> Cof
+
+pub fn cof_same(Cof, Cof) -> Bool
+
+pub fn cof_subst(Cof, Int32, Dim) -> Cof
+
+pub fn comp(CubeTy, Int32, PartialElem, Int32) -> CompResult?
+
+pub fn comp_path_universe(CubeTy, CubeTy) -> CubeTy?
+
+pub fn comp_universe(CubeTy, CubeTy, Cof, Array[Array[Int32]], Int32) -> CubeTy?
+
+pub fn const_ty(Int32, Int32) -> CubeTy
+
+pub fn dim_and(Dim, Dim) -> Dim
+
+pub fn dim_eq(Dim, Dim) -> Bool
+
+pub fn dim_not(Dim) -> Dim
+
+pub fn dim_or(Dim, Dim) -> Dim
+
+pub fn dim_subst(Dim, Int32, Dim) -> Dim
+
+pub fn extend_ty(CubeTy) -> CubeTy
+
+pub fn face_cof(Int32, Int32) -> Cof
+
+pub fn face_cube(Int32, Int32, Int32) -> Int32
+
+pub fn face_ty(CubeTy, Int32, Int32) -> CubeTy
+
+pub fn fill_line(CubeTy, Int32, Int32) -> Int32?
+
+pub fn fn_comp(Array[Int32], Array[Int32]) -> Array[Int32]
+
+pub fn fn_eq(Array[Int32], Array[Int32]) -> Bool
+
+pub fn fn_id(Int32) -> Array[Int32]
+
+pub fn fn_inv(Array[Int32], Int32) -> Array[Int32]?
+
+pub fn fn_is_bijection(Array[Int32], Int32) -> Bool
+
+pub fn fun_ty(CubeTy, CubeTy) -> CubeTy
+
+pub fn generic_cube(Int32) -> Int32
+
+pub fn glue_at(Cof, CubeTy, CubeTy, Array[Array[Int32]], Int32, PartialElem, Int32) -> Int32?
+
+pub fn glue_ty(Cof, CubeTy, CubeTy, Array[Array[Int32]]) -> CubeTy
+
+pub fn hcomp(CubeTy, PartialElem, Int32) -> CompResult?
+
+pub fn idtoeqv(CubeTy) -> Iso?
+
+pub fn is_subface(Int32, Int32, Int32) -> Bool
+
+pub fn iso_of_fn(Array[Int32], Int32, Int32) -> Iso?
+
+pub fn meet_cube(Int32, Int32, Int32) -> Int32
+
+pub fn partial_empty() -> PartialElem
+
+pub fn partial_value_at(CubeTy, PartialElem, Int32) -> Int32?
+
+pub fn path_ty(CubeTy, Int32, Int32) -> CubeTy
+
+pub fn perm_iso(Array[Int32]) -> Iso?
+
+pub fn pi_const_ty(Array[CubeTy]) -> CubeTy
+
+pub fn pow3(Int32) -> Int32
+
+pub fn prod_ty(CubeTy, CubeTy) -> CubeTy
+
+pub fn refl_line(Int32) -> CubeTy
+
+pub fn reverse_ty(CubeTy, Int32) -> CubeTy
+
+pub fn sigma_const_ty(Array[CubeTy]) -> CubeTy
+
+pub fn stage_line_iso(CubeTy, Int32, Int32) -> Iso?
+
+pub fn subcube_code(Array[Int32]) -> Int32
+
+pub fn subcube_digit(Int32, Int32) -> Int32
+
+pub fn subcube_digits(Int32, Int32) -> Array[Int32]
+
+pub fn subcube_set_digit(Int32, Int32, Int32) -> Int32
+
+pub fn swap_dims_ty(CubeTy, Int32, Int32) -> CubeTy
+
+pub fn sym_line(CubeTy) -> CubeTy
+
+pub fn transp_line(CubeTy, Int32, Int32) -> Int32?
+
+pub fn transport_path(CubeTy, Int32) -> Int32?
+
+pub fn ty_iso_id(CubeTy) -> TyIso
+
+pub fn ua(Iso) -> CubeTy
+
+pub fn unglue_at(Cof, CubeTy, CubeTy, Array[Array[Int32]], Int32, Int32) -> Int32
+
+// Errors
+
+// Types and methods
+#derive(Eq, Hash, @debug.Debug)
+pub(all) enum Cof {
+  CTop
+  CBot
+  CEq(Dim, Int32)
+  CAnd(Cof, Cof)
+  COr(Cof, Cof)
+}
+pub fn Cof::conj(Self, Self) -> Self
+pub fn Cof::disj(Self, Self) -> Self
+pub fn Cof::equal(Self, Self) -> Bool
+pub fn Cof::extent(Self, Int32) -> @core.Bits
+pub fn Cof::hash(Self) -> Int32
+pub fn Cof::hash_combine(Self, Hasher) -> Unit
+pub fn Cof::holds(Self, Array[Int32]) -> Bool
+pub fn Cof::holds_code(Self, Int32, Int32) -> Bool
+pub fn Cof::mentions(Self, Int32) -> Bool
+pub fn Cof::not_equal(Self, Self) -> Bool
+pub fn Cof::to_repr(Self) -> @debug.Repr
+
+pub struct CompResult {
+  lid : Int32
+  filler : Int32
+  fillers : Int32
+  unique_lid : Bool
+}
+
+#derive(Eq, @debug.Debug)
+pub struct CubeTy {
+  n : Int32
+  card : Array[Int32]
+  res : Array[Array[Int32]]
+}
+pub fn CubeTy::check(Self) -> Bool
+pub fn CubeTy::equal(Self, Self) -> Bool
+pub fn CubeTy::generic_card(Self) -> Int32
+pub fn CubeTy::new(Int32, Array[Int32], Array[Array[Int32]]) -> Self
+pub fn CubeTy::not_equal(Self, Self) -> Bool
+pub fn CubeTy::res_fn(Self, Int32, Int32) -> Array[Int32]
+pub fn CubeTy::restrict(Self, Int32, Int32, Int32) -> Int32
+pub fn CubeTy::stages(Self) -> Int32
+pub fn CubeTy::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, Hash, @debug.Debug)
+pub(all) enum Dim {
+  DZero
+  DOne
+  DVar(Int32)
+  DNot(Dim)
+  DAnd(Dim, Dim)
+  DOr(Dim, Dim)
+}
+pub fn Dim::dnf(Self) -> Array[Array[Int32]]
+pub fn Dim::equal(Self, Self) -> Bool
+pub fn Dim::eval3(Self, Array[Int32]) -> Int32
+pub fn Dim::hash(Self) -> Int32
+pub fn Dim::hash_combine(Self, Hasher) -> Unit
+pub fn Dim::mentions(Self, Int32) -> Bool
+pub fn Dim::not_equal(Self, Self) -> Bool
+pub fn Dim::to_repr(Self) -> @debug.Repr
+
+pub struct Iso {
+  dom : Int32
+  cod : Int32
+  fwd : Array[Int32]
+  bwd : Array[Int32]
+}
+pub fn Iso::apply(Self, Int32) -> Int32
+pub fn Iso::apply_inv(Self, Int32) -> Int32
+pub fn Iso::check(Self) -> Bool
+pub fn Iso::id(Int32) -> Self
+pub fn Iso::inv(Self) -> Self
+pub fn Iso::new(Int32, Int32, Array[Int32], Array[Int32]) -> Self
+pub fn Iso::then(Self, Self) -> Self
+
+#derive(Eq, @debug.Debug)
+pub struct PartialElem {
+  phi : Cof
+  comps : Array[Int32]
+  vals : Array[Int32]
+}
+pub fn PartialElem::equal(Self, Self) -> Bool
+pub fn PartialElem::new(Cof, Array[Int32], Array[Int32]) -> Self
+pub fn PartialElem::not_equal(Self, Self) -> Bool
+pub fn PartialElem::to_repr(Self) -> @debug.Repr
+
+pub struct TyIso {
+  fwd : Array[Array[Int32]]
+  bwd : Array[Array[Int32]]
+}
+pub fn TyIso::new(Array[Array[Int32]], Array[Array[Int32]]) -> Self
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,79 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/homotopy"
+
+import {
+  "arena/moonmath/core",
+}
+
+// Values
+pub fn bar_betti(Monoid, Int32) -> Array[Int32]
+
+pub fn bar_complex(Monoid, Int32) -> @core.ChainComplex
+
+pub fn circle() -> SimplicialComplex
+
+pub fn complex_summary(String, SimplicialComplex) -> String
+
+pub fn cyclic_group(Int32) -> Monoid
+
+pub fn fills_inner_horns_2(SimplicialComplex) -> Bool
+
+pub fn fills_inner_horns_3(SimplicialComplex) -> Bool
+
+pub fn mask_of(Array[Int32]) -> UInt64
+
+pub fn mask_popcount(UInt64) -> Int32
+
+pub fn mobius_band() -> SimplicialComplex
+
+pub fn projective_plane() -> SimplicialComplex
+
+pub fn pullback_compose(Int32, Int32, Int32, Array[Int32], Array[Int32], Array[Int32], Array[Int32]) -> @core.BoolMat
+
+pub fn simplex3() -> SimplicialComplex
+
+pub fn span_of_maps(Int32, Int32, Array[Int32], Array[Int32]) -> Span
+
+pub fn sphere() -> SimplicialComplex
+
+pub fn torus() -> SimplicialComplex
+
+pub fn trivial_monoid() -> Monoid
+
+// Errors
+
+// Types and methods
+pub struct Monoid {
+  n : Int32
+  e : Int32
+  mul : Array[Array[Int32]]
+}
+pub fn Monoid::is_associative(Self) -> Bool
+pub fn Monoid::is_unital(Self) -> Bool
+pub fn Monoid::new(Array[Array[Int32]], Int32) -> Self
+
+pub struct SimplicialComplex {
+  simplices : Array[Array[UInt64]]
+}
+pub fn SimplicialComplex::betti(Self) -> Array[Int32]
+pub fn SimplicialComplex::boundary_columns(Self, Int32) -> Array[@core.Bits]
+pub fn SimplicialComplex::count(Self, Int32) -> Int32
+pub fn SimplicialComplex::dim(Self) -> Int32
+pub fn SimplicialComplex::euler(Self) -> Int32
+pub fn SimplicialComplex::from_maximal(Array[UInt64]) -> Self
+pub fn SimplicialComplex::has(Self, UInt64) -> Bool
+pub fn SimplicialComplex::to_chain(Self) -> @core.ChainComplex
+
+pub struct Span {
+  left : Int32
+  right : Int32
+  rel : @core.BoolMat
+}
+pub fn Span::compose(Self, Self) -> Self
+pub fn Span::identity(Int32) -> Self
+pub fn Span::new(Int32, Int32, @core.BoolMat) -> Self
+pub fn Span::opposite(Self) -> Self
+
+// Type aliases
+
+// Traits

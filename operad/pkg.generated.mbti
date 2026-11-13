@@ -1,0 +1,85 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/operad"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn binary_op(Int32) -> Config
+
+pub fn board_product(Config, Config) -> Config
+
+pub fn can_swap(Int32, Int32) -> Bool
+
+pub fn check_associativity(Config, Array[Config], Array[Config]) -> Bool
+
+pub fn check_equivariance_inner(Config, Array[Config], Array[Array[Int32]]) -> Bool
+
+pub fn check_equivariance_outer(Config, Array[Config], Array[Int32]) -> Bool
+
+pub fn check_unit(Config) -> Bool
+
+pub fn compose_preserves_valid(Config, Array[Config]) -> Bool
+
+pub fn config_components(Int32, Int32, Int32) -> Array[Int32]
+
+pub fn factorial(Int32) -> Int32
+
+pub fn operad_unit(Int32) -> Config
+
+pub fn pi0_config(Int32, Int32, Int32) -> Int32
+
+pub fn ternary_op(Int32) -> Config
+
+pub fn unit_cube(Int32) -> LittleCube
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Config {
+  dim : Int32
+  cubes : Array[LittleCube]
+}
+pub fn Config::arity(Self) -> Int32
+pub fn Config::compose(Self, Array[Self]) -> Self?
+pub fn Config::equal(Self, Self) -> Bool
+pub fn Config::new(Int32, Array[LittleCube]) -> Self
+pub fn Config::not_equal(Self, Self) -> Bool
+pub fn Config::permute(Self, Array[Int32]) -> Self?
+pub fn Config::to_repr(Self) -> @debug.Repr
+pub fn Config::valid(Self) -> Bool
+
+#derive(Eq, @debug.Debug)
+pub struct LittleCube {
+  lo : Array[Int32]
+  side : Array[Int32]
+  den : Int32
+}
+pub fn LittleCube::compose(Self, Self) -> Self
+pub fn LittleCube::contains(Self, Self) -> Bool
+pub fn LittleCube::corner(Self, Array[Int32]) -> Array[Int32]
+pub fn LittleCube::dim(Self) -> Int32
+pub fn LittleCube::disjoint(Self, Self) -> Bool
+pub fn LittleCube::equal(Self, Self) -> Bool
+pub fn LittleCube::new(Array[Int32], Array[Int32], Int32) -> Self
+pub fn LittleCube::not_equal(Self, Self) -> Bool
+pub fn LittleCube::same_region(Self, Self) -> Bool
+pub fn LittleCube::to_repr(Self) -> @debug.Repr
+pub fn LittleCube::valid(Self) -> Bool
+
+#derive(Eq, @debug.Debug)
+pub struct Tokens {
+  dim : Int32
+  grid : Int32
+  pos : Array[Int32]
+}
+pub fn Tokens::equal(Self, Self) -> Bool
+pub fn Tokens::new(Int32, Int32, Array[Int32]) -> Self
+pub fn Tokens::not_equal(Self, Self) -> Bool
+pub fn Tokens::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

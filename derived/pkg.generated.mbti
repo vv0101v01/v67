@@ -1,0 +1,54 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/derived"
+
+// Values
+pub fn arrow(Int32, Int32, Array[Array[Int32]]) -> QArrow
+
+pub fn derivative(Array[PolyTerm], Int32) -> Array[PolyTerm]
+
+pub fn ideal_rank(Array[Array[PolyTerm]], WeightedBasis, Int32) -> Int32
+
+pub fn milnor_number(Array[PolyTerm], Array[Int32], Int32, Int32) -> Int32
+
+pub fn poly_of(Array[(Array[Int32], Int32)]) -> Array[PolyTerm]
+
+pub fn quotient_hilbert(Array[PolyTerm], Array[Int32], Int32, Int32, Bool) -> Array[Int32]
+
+pub fn tjurina_number(Array[PolyTerm], Array[Int32], Int32, Int32) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct PolyTerm {
+  exp : Array[Int32]
+  coeff : Int32
+}
+
+pub struct QArrow {
+  src : Int32
+  tgt : Int32
+  mat : Array[Array[Int32]]
+}
+
+pub struct QRep {
+  nverts : Int32
+  dims : Array[Int32]
+  arrows : Array[QArrow]
+}
+pub fn QRep::ext01(Self) -> (Int32, Int32)
+pub fn QRep::new(Int32, Array[Int32], Array[QArrow]) -> Self
+
+pub struct WeightedBasis {
+  weights : Array[Int32]
+  maxdeg : Int32
+  exps : Array[Array[Int32]]
+  degs : Array[Int32]
+}
+pub fn WeightedBasis::count_up_to(Self, Int32) -> Int32
+pub fn WeightedBasis::degree_at(Self, Int32) -> Int32
+pub fn WeightedBasis::index_of(Self, Array[Int32]) -> Int32
+pub fn WeightedBasis::new(Array[Int32], Int32) -> Self
+
+// Type aliases
+
+// Traits

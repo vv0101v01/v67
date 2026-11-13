@@ -1,0 +1,131 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/rewriting"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn all_reducts(Term, Array[Rule]) -> Array[Term]
+
+pub fn app(String, Array[Term]) -> Term
+
+pub fn check_local_confluence(Array[Rule], fuel? : Int32) -> ConfluenceReport
+
+pub fn complete(Array[(Term, Term)], Map[String, Int32], max_steps? : Int32, fuel? : Int32, max_size? : Int32) -> CompletionResult
+
+pub fn constant(String) -> Term
+
+pub fn count_var(Term, Int32) -> Int32
+
+pub fn critical_pairs(Rule, Rule) -> Array[CriticalPair]
+
+pub fn is_normal(Term, Array[Rule]) -> Bool
+
+pub fn joinable(Term, Term, Array[Rule], fuel? : Int32) -> Bool
+
+pub fn lpo_gt(Term, Term, Map[String, Int32]) -> Bool
+
+pub fn lpo_terminating(Array[Rule], Map[String, Int32]) -> Bool
+
+pub fn match_term(Term, Term) -> Map[Int32, Term]?
+
+pub fn normalize(Term, Array[Rule], fuel? : Int32) -> NormalForm
+
+pub fn rewrite_root(Term, Rule) -> Term?
+
+pub fn rewrite_step(Term, Array[Rule]) -> Term?
+
+pub fn rule(Term, Term) -> Rule
+
+pub fn size_terminating(Array[Rule]) -> Bool
+
+pub fn system_critical_pairs(Array[Rule]) -> Array[(Term, Term)]
+
+pub fn unify(Term, Term) -> Map[Int32, Term]?
+
+pub fn v(Int32) -> Term
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct CompletionResult {
+  rules : Array[Rule]
+  equations_left : Array[(Term, Term)]
+  steps : Int32
+  succeeded : Bool
+}
+pub fn CompletionResult::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct ConfluenceReport {
+  pairs : Int32
+  joinable_pairs : Int32
+  unjoinable : Array[(Term, Term)]
+}
+pub fn ConfluenceReport::equal(Self, Self) -> Bool
+pub fn ConfluenceReport::locally_confluent(Self) -> Bool
+pub fn ConfluenceReport::not_equal(Self, Self) -> Bool
+pub fn ConfluenceReport::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct CriticalPair {
+  left : Term
+  right : Term
+  outer : Rule
+  inner : Rule
+  pos : Array[Int32]
+}
+pub fn CriticalPair::equal(Self, Self) -> Bool
+pub fn CriticalPair::not_equal(Self, Self) -> Bool
+pub fn CriticalPair::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum NormalForm {
+  Normal(Term)
+  Diverged(Term)
+}
+pub fn NormalForm::equal(Self, Self) -> Bool
+pub fn NormalForm::not_equal(Self, Self) -> Bool
+pub fn NormalForm::term(Self) -> Term
+pub fn NormalForm::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Rule {
+  lhs : Term
+  rhs : Term
+}
+pub fn Rule::equal(Self, Self) -> Bool
+pub fn Rule::not_equal(Self, Self) -> Bool
+pub fn Rule::rename(Self, Int32) -> Self
+pub fn Rule::render(Self) -> String
+pub fn Rule::to_repr(Self) -> @debug.Repr
+pub fn Rule::well_formed(Self) -> Bool
+
+#derive(Eq, Hash, @debug.Debug)
+pub enum Term {
+  Var(Int32)
+  App(String, Array[Term])
+}
+pub fn Term::at(Self, Array[Int32]) -> Self?
+pub fn Term::depth(Self) -> Int32
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::hash(Self) -> Int32
+pub fn Term::hash_combine(Self, Hasher) -> Unit
+pub fn Term::max_var(Self) -> Int32
+pub fn Term::nonvar_positions(Self) -> Array[Array[Int32]]
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::occurs(Self, Int32) -> Bool
+pub fn Term::positions(Self) -> Array[Array[Int32]]
+pub fn Term::rename(Self, Int32) -> Self
+pub fn Term::render(Self) -> String
+pub fn Term::replace(Self, Array[Int32], Self) -> Self?
+pub fn Term::size(Self) -> Int32
+pub fn Term::subst(Self, Map[Int32, Self]) -> Self
+pub fn Term::to_repr(Self) -> @debug.Repr
+pub fn Term::vars(Self) -> Array[Int32]
+
+// Type aliases
+
+// Traits

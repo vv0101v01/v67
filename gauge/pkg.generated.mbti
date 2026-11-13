@@ -1,0 +1,93 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/gauge"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cyclic(Int32) -> FinGroup
+
+pub fn symmetric3() -> FinGroup
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Bundle {
+  conn : Connection
+}
+pub fn Bundle::base(Self, Int32) -> Int32
+pub fn Bundle::check_equivariance(Self) -> Bool
+pub fn Bundle::equal(Self, Self) -> Bool
+pub fn Bundle::fibre(Self, Int32) -> Int32
+pub fn Bundle::holonomy_group(Self, Int32) -> Array[Int32]
+pub fn Bundle::horizontal(Self, Int32, Int32, Bool) -> Int32?
+pub fn Bundle::is_integrable_trivially(Self) -> Bool
+pub fn Bundle::leaf(Self, Int32) -> Array[Int32]
+pub fn Bundle::leaf_size(Self, Int32) -> Int32
+pub fn Bundle::leaves(Self) -> Array[Array[Int32]]
+pub fn Bundle::new(Connection) -> Self
+pub fn Bundle::not_equal(Self, Self) -> Bool
+pub fn Bundle::point(Self, Int32, Int32) -> Int32
+pub fn Bundle::size(Self) -> Int32
+pub fn Bundle::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Connection {
+  grid : Grid
+  group : FinGroup
+  transport : Array[Int32]
+}
+pub fn Connection::along(Self, Int32, Array[(Int32, Bool)]) -> Int32?
+pub fn Connection::bianchi_sides(Self, Int32, Int32, Int32, Int32) -> (Int32, Int32)?
+pub fn Connection::check_bianchi(Self, Int32, Int32, Int32, Int32) -> Bool
+pub fn Connection::check_bianchi_all(Self) -> Bool
+pub fn Connection::check_gauge_covariance(Self, Array[Int32]) -> Bool
+pub fn Connection::curvature(Self, Int32, Int32, Int32) -> Int32?
+pub fn Connection::curvature_count(Self) -> Int32
+pub fn Connection::curvatures(Self) -> Array[(Int32, Int32, Int32, Int32)]
+pub fn Connection::equal(Self, Self) -> Bool
+pub fn Connection::from_edges(Grid, FinGroup, Array[Int32]) -> Self
+pub fn Connection::gauge_transform(Self, Array[Int32]) -> Self
+pub fn Connection::is_flat(Self) -> Bool
+pub fn Connection::not_equal(Self, Self) -> Bool
+pub fn Connection::step(Self, Int32, Int32, Bool) -> Int32?
+pub fn Connection::to_repr(Self) -> @debug.Repr
+pub fn Connection::trivial(Grid, FinGroup) -> Self
+
+#derive(Eq, @debug.Debug)
+pub struct FinGroup {
+  n : Int32
+  mul : Array[Array[Int32]]
+  e : Int32
+  inv : Array[Int32]
+}
+pub fn FinGroup::check(Self) -> Bool
+pub fn FinGroup::equal(Self, Self) -> Bool
+pub fn FinGroup::inverse(Self, Int32) -> Int32
+pub fn FinGroup::is_abelian(Self) -> Bool
+pub fn FinGroup::new(Array[Array[Int32]], Int32) -> Self
+pub fn FinGroup::not_equal(Self, Self) -> Bool
+pub fn FinGroup::op(Self, Int32, Int32) -> Int32
+pub fn FinGroup::product(Self, Array[Int32]) -> Int32
+pub fn FinGroup::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Grid {
+  dims : Array[Int32]
+}
+pub fn Grid::coords(Self, Int32) -> Array[Int32]
+pub fn Grid::edge_slot(Self, Int32, Int32) -> Int32
+pub fn Grid::equal(Self, Self) -> Bool
+pub fn Grid::index(Self, Array[Int32]) -> Int32
+pub fn Grid::ndirs(Self) -> Int32
+pub fn Grid::new(Array[Int32]) -> Self
+pub fn Grid::not_equal(Self, Self) -> Bool
+pub fn Grid::nverts(Self) -> Int32
+pub fn Grid::step(Self, Int32, Int32, Bool) -> Int32
+pub fn Grid::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

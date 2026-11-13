@@ -1,0 +1,78 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/demorgan"
+
+import {
+  "arena/moonmath/cubical",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cube_conn(Int32, Int32, Int32) -> CubeMap
+
+pub fn cube_degen(Int32, Int32) -> CubeMap
+
+pub fn cube_dup(Int32, Int32) -> CubeMap
+
+pub fn cube_face(Int32, Int32, Int32) -> CubeMap
+
+pub fn cube_id(Int32) -> CubeMap
+
+pub fn cube_map(Int32, Int32, Array[@cubical.Dim]) -> CubeMap
+
+pub fn cube_map_eq(CubeMap, CubeMap) -> Bool
+
+pub fn cube_map_pointwise_eq(CubeMap, CubeMap) -> Bool
+
+pub fn cube_pin(Int32, Int32, Int32) -> CubeMap
+
+pub fn cube_rev(Int32, Int32) -> CubeMap
+
+pub fn cube_swap(Int32, Int32) -> CubeMap
+
+pub fn cube_then(CubeMap, CubeMap) -> CubeMap
+
+pub fn dim_subst_all(@cubical.Dim, Array[@cubical.Dim]) -> @cubical.Dim
+
+pub fn free_dm_algebra(Int32) -> Array[DMA]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct CubeMap {
+  src : Int32
+  dst : Int32
+  coords : Array[@cubical.Dim]
+}
+pub fn CubeMap::apply(Self, Array[Int32]) -> Array[Int32]
+pub fn CubeMap::equal(Self, Self) -> Bool
+pub fn CubeMap::not_equal(Self, Self) -> Bool
+pub fn CubeMap::to_repr(Self) -> @debug.Repr
+pub fn CubeMap::well_formed(Self) -> Bool
+
+#derive(Eq, @debug.Debug)
+pub struct DMA {
+  terms : Array[Array[Int32]]
+}
+pub fn DMA::canon(Array[Array[Int32]]) -> Self
+pub fn DMA::equal(Self, Self) -> Bool
+pub fn DMA::eval3(Self, Array[Int32]) -> Int32
+pub fn DMA::gen(Int32) -> Self
+pub fn DMA::is_one(Self) -> Bool
+pub fn DMA::is_zero(Self) -> Bool
+pub fn DMA::join(Self, Self) -> Self
+pub fn DMA::leq(Self, Self) -> Bool
+pub fn DMA::meet(Self, Self) -> Self
+pub fn DMA::neg_gen(Int32) -> Self
+pub fn DMA::negate(Self) -> Self
+pub fn DMA::not_equal(Self, Self) -> Bool
+pub fn DMA::of_dim(@cubical.Dim) -> Self
+pub fn DMA::one() -> Self
+pub fn DMA::render(Self) -> String
+pub fn DMA::to_dim(Self) -> @cubical.Dim
+pub fn DMA::to_repr(Self) -> @debug.Repr
+pub fn DMA::zero() -> Self
+
+// Type aliases
+
+// Traits

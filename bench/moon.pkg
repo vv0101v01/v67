@@ -1,0 +1,22 @@
+pkgtype(kind: "executable")
+
+import {
+  "arena/moonmath/core",
+  "arena/moonmath/homotopy",
+  "arena/moonmath/algebra",
+  "arena/moonmath/derived",
+  "arena/moonmath/cubical",
+  "arena/moonmath/ctt",
+  "arena/moonmath/rewriting",
+  "arena/moonmath/demorgan",
+  "arena/moonmath/deform",
+  "arena/moonmath/fiber",
+  "arena/moonmath/gauge",
+  "arena/moonmath/omega",
+  "arena/moonmath/cover",
+  "arena/moonmath/adjoint",
+  "arena/moonmath/nbe",
+  "arena/moonmath/operad",
+  "arena/moonmath/chordarc",
+  "moonbitlang/core/bench" @cbench,
+}

@@ -1,0 +1,348 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/ctt"
+
+import {
+  "arena/moonmath/cubical",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ap(Val, Val) -> Val
+
+pub fn circle_loop() -> Val
+
+pub fn circle_rec(Val, Val, Val, Val) -> Val
+
+pub fn circle_trunc_contr() -> Val
+
+pub fn coe(Fam, Int32, Val) -> Val
+
+pub fn coe_back(Fam, Int32, Val) -> Val
+
+pub fn coe_back_to(Fam, Int32, Val) -> DClo
+
+pub fn coe_between(Fam, @cubical.Dim, @cubical.Dim, Val) -> Val
+
+pub fn coe_to(Fam, Int32, Val) -> DClo
+
+pub fn coeq_rec(Val, Val, Val, Val) -> Val
+
+pub fn coeq_rel(Val, Val, Val) -> Val
+
+pub fn cof_entails(@cubical.Cof, @cubical.Cof) -> Bool
+
+pub fn cof_render(@cubical.Cof) -> String
+
+pub fn cof_rev(@cubical.Cof) -> @cubical.Cof
+
+pub fn comp(Fam, Int32, Tube, Val) -> Val
+
+pub fn comp_between(Fam, @cubical.Dim, @cubical.Dim, Tube, Val) -> Val
+
+pub fn comp_rev(Fam, Tube, Val) -> Val
+
+pub fn comp_sym(Fam, Tube, Val) -> Val
+
+pub fn contr_iso(Val) -> Contr
+
+pub fn contr_path_contr(Val, Val, Val, Val) -> Val
+
+pub fn contr_to_prop(Val, Val) -> Val
+
+pub fn dclo_const(Val) -> DClo
+
+pub fn dim_render(@cubical.Dim) -> String
+
+pub fn equiv(Equiv, Val, Array[(@cubical.Cof, Val, Val)]) -> (Val, Val)
+
+pub fn equiv_comp(Equiv, Equiv) -> Equiv
+
+pub fn equiv_id(Val) -> Equiv
+
+pub fn equiv_inv(Equiv) -> Equiv
+
+pub fn fam_between(Fam, @cubical.Dim, @cubical.Dim) -> Fam
+
+pub fn fam_const(Val) -> Fam
+
+pub fn fill(Fam, Int32, Tube, Val) -> DClo
+
+pub fn fill_between(Fam, @cubical.Dim, @cubical.Dim, Tube, Val) -> DClo
+
+pub fn fill_rev(Fam, Tube, Val) -> DClo
+
+pub fn fin1_contr() -> Val
+
+pub fn fin_fun(Array[Int32]) -> Val
+
+pub fn fin_fun_vals(Array[Val]) -> Val
+
+pub fn fin_points(Int32) -> Array[Val]
+
+pub fn fresh_dim() -> Int32
+
+pub fn funext(Clo) -> Val
+
+pub fn glue_part(Val, @cubical.Cof) -> Val?
+
+pub fn hcomp_const(Val, Tube, Val) -> Val
+
+pub fn hfill_const(Val, Tube, Val) -> DClo
+
+pub fn idtoeqv(Val) -> Equiv
+
+pub fn interp(@cubical.Dim, @cubical.Dim, @cubical.Dim) -> @cubical.Dim
+
+pub fn is_contr(Val) -> Val
+
+pub fn is_prop(Val) -> Val
+
+pub fn is_prop_to_set(Val, Val) -> Val
+
+pub fn is_set(Val) -> Val
+
+pub fn lazy_bool(() -> Bool) -> LazyBool
+
+pub fn lazy_clo(() -> Clo) -> Clo
+
+pub fn lazy_contr(() -> Contr) -> Contr
+
+pub fn lazy_false() -> LazyBool
+
+pub fn lazy_true() -> LazyBool
+
+pub fn memo_dclo(DClo) -> DClo
+
+pub fn memo_fam(Fam) -> Fam
+
+pub fn mk_glue(Array[GlueTm], Val) -> Val
+
+pub fn mk_glue_ty(Array[GlueBr], Val) -> Val
+
+pub fn nat_lit(Int32) -> Val
+
+pub fn pathJ((Val, Val) -> Val, Val, Val) -> Val
+
+pub fn path_concat(Val, Val, Val) -> Val
+
+pub fn path_fam(Val) -> Fam
+
+pub fn path_sym(Val) -> Val
+
+pub fn path_ty(Val, Val, Val) -> Val
+
+pub fn prop_to_contr(Val, Val) -> Val
+
+pub fn quote_norm(Val, Int32) -> String
+
+pub fn refl(Val) -> Val
+
+pub fn roundtrip_fun(Val, Bool) -> Val
+
+pub fn singleton_contract(Val) -> Val
+
+pub fn susp_merid(Val, Val) -> Val
+
+pub fn susp_rec(Val, Val, Val, Val, Val) -> Val
+
+pub fn sym_equiv(Val, Val, Val) -> Equiv
+
+pub fn transp(Fam, Int32, @cubical.Cof, Val) -> Val
+
+pub fn transp_between(Fam, @cubical.Dim, @cubical.Dim, @cubical.Cof, Val) -> Val
+
+pub fn transp_path(Fam, @cubical.Dim, @cubical.Dim, Val) -> Val
+
+pub fn transport(Val, Val) -> Val
+
+pub fn transport_beta(Fam, Val) -> Val
+
+pub fn transport_center(Val, Val) -> Val
+
+pub fn transport_contr(Val) -> Contr
+
+pub fn transport_roundtrip(Val, Val, Bool) -> Val
+
+pub fn transport_sym(Val, Val) -> Val
+
+pub fn trunc_contr(Val, Val) -> Val
+
+pub fn trunc_is_prop(Val) -> Val
+
+pub fn trunc_rec(Val, Val, Val, Val) -> Val
+
+pub fn trunc_sq(Val, Val, Val) -> Val
+
+pub fn tube_const(@cubical.Cof, Val) -> TubeBr
+
+pub fn ua(Equiv) -> Val
+
+pub fn ua_beta(Equiv, Val) -> Val
+
+pub fn ua_eta(Val) -> (Val, Val)
+
+pub fn ua_eta_base(Val) -> Val
+
+pub fn ua_eta_general(Val) -> Val
+
+pub fn ua_eta_path(Val, Val) -> Val
+
+pub fn ua_sym(Equiv) -> (Val, Val)
+
+pub fn unglue(Val) -> Val
+
+pub fn val_conv(Val, Val) -> Bool
+
+pub fn vapp(Val, Val) -> Val
+
+pub fn vfst(Val) -> Val
+
+pub fn vloop(@cubical.Dim) -> Val
+
+pub fn vnatiter(Val, Clo, Val) -> Val
+
+pub fn vnatrec(Val, Clo, Val) -> Val
+
+pub fn vpapp(Val, @cubical.Dim) -> Val
+
+pub fn vsnd(Val) -> Val
+
+pub fn vsplit(Int32, Array[Val], Val) -> Val
+
+// Errors
+
+// Types and methods
+type BoolCell
+
+pub(all) struct Clo {
+  f : (Val) -> Val
+}
+pub fn Clo::at(Self, Val) -> Val
+pub fn Clo::new((Val) -> Val) -> Self
+
+pub(all) struct Contr {
+  f : (Val, Val, Val) -> Val
+}
+
+pub(all) struct DClo {
+  f : (@cubical.Dim) -> Val
+}
+pub fn DClo::at(Self, @cubical.Dim) -> Val
+pub fn DClo::new((@cubical.Dim) -> Val) -> Self
+
+pub(all) struct Equiv {
+  src : Val
+  tgt : Val
+  fwd : Val
+  bwd : Val
+  alpha : Clo
+  beta : Clo
+  contr : Contr
+  strict : LazyBool
+}
+pub fn Equiv::center(Self, Val) -> Val
+pub fn Equiv::check(Self, Array[Val], Array[Val]) -> Bool
+pub fn Equiv::check_contr(Self, Val, Val, Val) -> Bool
+pub fn Equiv::equal(Self, Self) -> Bool
+pub fn Equiv::fiber(Self, Val) -> Val
+pub fn Equiv::new(Val, Val, Val, Val) -> Self
+pub fn Equiv::not_equal(Self, Self) -> Bool
+pub fn Equiv::to_repr(Self) -> @debug.Repr
+pub fn Equiv::with_contr(Val, Val, Val, Val, Clo, Clo, Contr) -> Self
+pub impl Eq for Equiv
+pub impl @debug.Debug for Equiv
+
+pub(all) struct Fam {
+  f : (@cubical.Dim) -> Val
+}
+pub fn Fam::at(Self, @cubical.Dim) -> Val
+pub fn Fam::is_constant(Self, Int32) -> Bool
+pub fn Fam::new((@cubical.Dim) -> Val) -> Self
+pub fn Fam::rev(Self) -> Self
+
+pub(all) struct GlueBr {
+  cof : @cubical.Cof
+  ty : Val
+  eq : Equiv
+}
+
+pub(all) struct GlueTm {
+  cof : @cubical.Cof
+  mut tm : Val
+}
+
+pub struct LazyBool {
+  cell : BoolCell
+}
+pub fn LazyBool::get(Self) -> Bool
+
+pub(all) struct Tube {
+  branches : Array[TubeBr]
+}
+pub fn Tube::add(Self, @cubical.Cof, DClo) -> Self
+pub fn Tube::app(Self, DClo) -> Self
+pub fn Tube::at_dim(Self, @cubical.Dim) -> Self
+pub fn Tube::between(Self, @cubical.Dim, @cubical.Dim) -> Self
+pub fn Tube::concat(Self, Self) -> Self
+pub fn Tube::connect(Self, Int32, @cubical.Dim, Int32) -> Self
+pub fn Tube::empty() -> Self
+pub fn Tube::fst(Self) -> Self
+pub fn Tube::is_constant(Self, Int32) -> Bool
+pub fn Tube::restrict(Self, @cubical.Cof) -> Self
+pub fn Tube::rev(Self) -> Self
+pub fn Tube::snd(Self) -> Self
+pub fn Tube::unglue(Self) -> Self
+
+pub(all) struct TubeBr {
+  cof : @cubical.Cof
+  tm : DClo
+}
+
+pub(all) enum Val {
+  VU
+  VFin(Int32)
+  VNat
+  VPi(Val, Clo)
+  VSig(Val, Clo)
+  VPath(DClo, Val, Val)
+  VGlue(Val, Array[GlueBr])
+  VLit(Int32)
+  VZero
+  VSuc(Val)
+  VSplit(Int32, Array[Val], Val)
+  VNatRec(Val, Clo, Val)
+  VCircle
+  VBase
+  VLoop(@cubical.Dim)
+  VSusp(Val)
+  VNorth
+  VSouth
+  VMerid(Val, Val, @cubical.Dim)
+  VTrunc(Val)
+  VInc(Val)
+  VSq(Val, Val, Val, @cubical.Dim)
+  VHComp(Val, Tube, Val)
+  VCircRec(Val, Val, Val, Val)
+  VTruncRec(Val, Val, Val, Val)
+  VSuspRec(Val, Val, Val, Val, Val)
+  VCoeq(Val, Val, Val)
+  VCoeqInc(Val)
+  VCoeqRel(Val, @cubical.Dim)
+  VCoeqRec(Val, Val, Val, Val)
+  VLam(Clo)
+  VPair(Val, Val)
+  VPLam(DClo)
+  VGlued(Array[GlueTm], Val)
+  VNe(Int32)
+}
+pub fn Val::equal(Self, Self) -> Bool
+pub fn Val::mentions_dim(Self, Int32) -> Bool
+pub fn Val::not_equal(Self, Self) -> Bool
+pub fn Val::quote(Self, Int32) -> String
+pub fn Val::to_repr(Self) -> @debug.Repr
+pub impl Eq for Val
+pub impl @debug.Debug for Val
+
+// Type aliases
+
+// Traits

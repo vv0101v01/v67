@@ -1,0 +1,131 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/cover"
+
+import {
+  "arena/moonmath/cubical",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn audit_direction(@cubical.CubeTy, Int32, tube_size? : Int32) -> ComplementReport
+
+pub fn audit_type(@cubical.CubeTy, tube_size? : Int32) -> ComplementReport
+
+pub fn circle_cover(Int32) -> GraphCover
+
+pub fn cyclic_cover(Int32) -> CyclicCover
+
+pub fn letter_ends(Space, Int32) -> (Int32, Int32)
+
+pub fn reduce(Array[Int32]) -> Array[Int32]
+
+pub fn space_circle() -> Space
+
+pub fn space_cycle(Int32) -> Space
+
+pub fn space_wedge(Int32) -> Space
+
+pub fn universal_cover(Space, Int32, Int32) -> UniversalCover
+
+pub fn wedge_cover(Int32, Int32) -> GraphCover
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct BoxProblem {
+  ty : @cubical.CubeTy
+  dir : Int32
+  tube : @cubical.PartialElem
+  cap : Int32
+}
+pub fn BoxProblem::complement(Self) -> Int32?
+pub fn BoxProblem::equal(Self, Self) -> Bool
+pub fn BoxProblem::new(@cubical.CubeTy, Int32, @cubical.PartialElem, Int32) -> Self
+pub fn BoxProblem::not_equal(Self, Self) -> Bool
+pub fn BoxProblem::to_repr(Self) -> @debug.Repr
+pub fn BoxProblem::well_formed(Self) -> Bool
+
+#derive(Eq, @debug.Debug)
+pub struct ComplementReport {
+  boxes : Int32
+  complementable : Int32
+  failures : Int32
+  unique_lids : Int32
+}
+pub fn ComplementReport::equal(Self, Self) -> Bool
+pub fn ComplementReport::is_kan(Self) -> Bool
+pub fn ComplementReport::not_equal(Self, Self) -> Bool
+pub fn ComplementReport::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct CoverPoint {
+  word : Array[Int32]
+  endpoint : Int32
+}
+pub fn CoverPoint::equal(Self, Self) -> Bool
+pub fn CoverPoint::not_equal(Self, Self) -> Bool
+pub fn CoverPoint::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct CyclicCover {
+  k : Int32
+  total : Space
+}
+pub fn CyclicCover::deck_group(Self) -> Array[Array[Int32]]
+pub fn CyclicCover::equal(Self, Self) -> Bool
+pub fn CyclicCover::is_regular(Self) -> Bool
+pub fn CyclicCover::not_equal(Self, Self) -> Bool
+pub fn CyclicCover::project(Self, Int32) -> Int32
+pub fn CyclicCover::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct GraphCover {
+  base : Space
+  total : Space
+  proj : Array[Int32]
+  edge_map : Array[Int32]
+}
+pub fn GraphCover::equal(Self, Self) -> Bool
+pub fn GraphCover::has_local_sections(Self) -> Bool
+pub fn GraphCover::is_covering(Self) -> Bool
+pub fn GraphCover::local_section(Self, Int32, Int32) -> Array[Int32]?
+pub fn GraphCover::new(Space, Space, Array[Int32], Array[Int32]) -> Self
+pub fn GraphCover::not_equal(Self, Self) -> Bool
+pub fn GraphCover::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Space {
+  nverts : Int32
+  edges : Array[(Int32, Int32)]
+}
+pub fn Space::equal(Self, Self) -> Bool
+pub fn Space::nedges(Self) -> Int32
+pub fn Space::new(Int32, Array[(Int32, Int32)]) -> Self
+pub fn Space::not_equal(Self, Self) -> Bool
+pub fn Space::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct UniversalCover {
+  base : Space
+  root : Int32
+  radius : Int32
+  points : Array[CoverPoint]
+  lift : Array[Array[Int32]]
+}
+pub fn UniversalCover::check_deck(Self, Int32) -> Bool
+pub fn UniversalCover::deck_count(Self) -> Int32
+pub fn UniversalCover::deck_translation(Self, Int32) -> Array[Int32]?
+pub fn UniversalCover::equal(Self, Self) -> Bool
+pub fn UniversalCover::fibre(Self, Int32) -> Array[Int32]
+pub fn UniversalCover::is_local_bijection(Self) -> Bool
+pub fn UniversalCover::is_tree(Self) -> Bool
+pub fn UniversalCover::lift_path(Self, Int32, Array[Int32]) -> Int32?
+pub fn UniversalCover::not_equal(Self, Self) -> Bool
+pub fn UniversalCover::project(Self, Int32) -> Int32
+pub fn UniversalCover::size(Self) -> Int32
+pub fn UniversalCover::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

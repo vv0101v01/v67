@@ -1,0 +1,55 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/chordarc"
+
+import {
+  "arena/moonmath/homotopy",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn gcd(Int32, Int32) -> Int32
+
+pub fn hairpin(Int32, Int32) -> Polyhedron
+
+pub fn isqrt(Int32) -> Int32
+
+pub fn octahedron(Int32) -> Polyhedron
+
+pub fn tetrahedron(Int32) -> Polyhedron
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Polyhedron {
+  coords : Array[Array[Int32]]
+  tris : Array[(Int32, Int32, Int32)]
+}
+pub fn Polyhedron::ambient(Self, Int32, Int32) -> Int32
+pub fn Polyhedron::check_bi_lipschitz(Self, Int32, Int32) -> (Int32, Int32)
+pub fn Polyhedron::check_short_paths(Self, Int32, Int32) -> (Int32, Int32)
+pub fn Polyhedron::chord_arc_constant(Self) -> (Int32, Int32)?
+pub fn Polyhedron::chord_arc_constant_on(Self, Array[Int32]) -> (Int32, Int32)?
+pub fn Polyhedron::cross(Self, (Int32, Int32, Int32)) -> Array[Int32]
+pub fn Polyhedron::dist2(Self, Int32, Int32) -> Int32
+pub fn Polyhedron::edges(Self) -> Array[(Int32, Int32)]
+pub fn Polyhedron::equal(Self, Self) -> Bool
+pub fn Polyhedron::euler(Self) -> Int32
+pub fn Polyhedron::geodesics(Self) -> Array[Array[Int32]]
+pub fn Polyhedron::geodesics_with_hops(Self) -> (Array[Array[Int32]], Array[Array[Int32]])
+pub fn Polyhedron::hop_diameter(Self) -> Int32
+pub fn Polyhedron::is_chord_arc(Self, Int32, Int32) -> Bool
+pub fn Polyhedron::is_closed(Self) -> Bool
+pub fn Polyhedron::min_edge(Self) -> Int32
+pub fn Polyhedron::new(Array[Array[Int32]], Array[(Int32, Int32, Int32)]) -> Self
+pub fn Polyhedron::non_degenerate(Self) -> Bool
+pub fn Polyhedron::not_equal(Self, Self) -> Bool
+pub fn Polyhedron::ntris(Self) -> Int32
+pub fn Polyhedron::nverts(Self) -> Int32
+pub fn Polyhedron::subdivide(Self) -> Self
+pub fn Polyhedron::to_complex(Self) -> @homotopy.SimplicialComplex
+pub fn Polyhedron::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

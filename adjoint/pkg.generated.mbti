@@ -1,0 +1,134 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/adjoint"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bang(Int32, Int32, Formula) -> Formula
+
+pub fn conservative_at(Modes, Modes, Int32, Int32, Array[(Array[Formula], Formula)]) -> (Int32, Int32)
+
+pub fn independent(Array[Antecedent], Int32, Modes) -> Bool
+
+pub let mode_a : Int32
+
+pub let mode_l : Int32
+
+pub let mode_u : Int32
+
+pub fn modes_diamond() -> Modes
+
+pub fn modes_linear() -> Modes
+
+pub fn modes_lnl() -> Modes
+
+pub fn modes_three() -> Modes
+
+pub fn sequent_key(Array[Antecedent], Int32, Formula) -> String
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Antecedent {
+  mode : Int32
+  formula : Formula
+}
+pub fn Antecedent::equal(Self, Self) -> Bool
+pub fn Antecedent::new(Int32, Formula) -> Self
+pub fn Antecedent::not_equal(Self, Self) -> Bool
+pub fn Antecedent::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Formula {
+  Atom(Int32)
+  One
+  Zero
+  Top
+  Tensor(Formula, Formula)
+  Lolli(Formula, Formula)
+  With(Formula, Formula)
+  Plus(Formula, Formula)
+  Up(Int32, Int32, Formula)
+  Down(Int32, Int32, Formula)
+}
+pub fn Formula::equal(Self, Self) -> Bool
+pub fn Formula::fixed_mode(Self) -> Int32?
+pub fn Formula::key(Self) -> String
+pub fn Formula::not_equal(Self, Self) -> Bool
+pub fn Formula::size(Self) -> Int32
+pub fn Formula::to_repr(Self) -> @debug.Repr
+pub fn Formula::well_formed(Self, Modes) -> Bool
+
+#derive(Eq, @debug.Debug)
+pub struct Modes {
+  names : Array[String]
+  geq : Array[Array[Bool]]
+  weaken : Array[Bool]
+  contract : Array[Bool]
+}
+pub fn Modes::allows_contract(Self, Int32) -> Bool
+pub fn Modes::allows_weaken(Self, Int32) -> Bool
+pub fn Modes::check(Self) -> Bool
+pub fn Modes::equal(Self, Self) -> Bool
+pub fn Modes::ge(Self, Int32, Int32) -> Bool
+pub fn Modes::new(Array[String], Array[Array[Bool]], Array[Bool], Array[Bool]) -> Self
+pub fn Modes::not_equal(Self, Self) -> Bool
+pub fn Modes::size(Self) -> Int32
+pub fn Modes::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum Proof {
+  Id(Formula)
+  OneR
+  OneL(Proof)
+  TopR
+  ZeroL
+  TensorR(Proof, Proof)
+  TensorL(Proof)
+  LolliR(Proof)
+  LolliL(Proof, Proof)
+  WithR(Proof, Proof)
+  WithL1(Proof)
+  WithL2(Proof)
+  PlusR1(Proof)
+  PlusR2(Proof)
+  PlusL(Proof, Proof)
+  UpR(Proof)
+  UpL(Proof)
+  DownR(Proof)
+  DownL(Proof)
+  Weaken(Proof)
+  Contract(Proof)
+}
+pub fn Proof::equal(Self, Self) -> Bool
+pub fn Proof::has_shift(Self) -> Bool
+pub fn Proof::not_equal(Self, Self) -> Bool
+pub fn Proof::size(Self) -> Int32
+pub fn Proof::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Prover {
+  modes : Modes
+  memo : Map[String, Proof?]
+  mut steps : Int32
+}
+pub fn Prover::adjunction_holds(Self, Int32, Int32, Formula, Formula) -> Bool
+pub fn Prover::check_cut(Self, Array[(Array[Antecedent], Int32, Formula, Array[Antecedent], Int32, Formula)]) -> (Int32, Int32)
+pub fn Prover::equal(Self, Self) -> Bool
+pub fn Prover::exponential_laws(Self, Int32, Int32, Formula) -> (Bool, Bool, Bool, Bool)
+pub fn Prover::new(Modes) -> Self
+pub fn Prover::not_equal(Self, Self) -> Bool
+pub fn Prover::provable(Self, Array[Antecedent], Int32, Formula, contract_fuel? : Int32) -> Bool
+pub fn Prover::prove(Self, Array[Antecedent], Int32, Formula, contract_fuel? : Int32) -> Proof?
+pub fn Prover::shift_counit(Self, Int32, Int32, Formula) -> Proof?
+pub fn Prover::shift_unit(Self, Int32, Int32, Formula) -> Proof?
+pub fn Prover::steps(Self) -> Int32
+pub fn Prover::to_repr(Self) -> @debug.Repr
+pub fn Prover::triangle_ids(Self, Int32, Int32, Formula) -> Bool
+
+// Type aliases
+
+// Traits

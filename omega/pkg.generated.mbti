@@ -1,0 +1,158 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/moonmath/omega"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn codiscrete_groupoid(Int32) -> Groupoid
+
+pub fn discrete_groupoid(Int32) -> Groupoid
+
+pub fn gp_cyclic(Int32) -> Gp
+
+pub fn graph_circle() -> Graph
+
+pub fn graph_theta() -> Graph
+
+pub fn graph_wedge2() -> Graph
+
+pub fn group_as_groupoid(Array[Array[Int32]], Int32) -> Groupoid
+
+pub fn h3_order(Gp, Int32, limit? : Int32) -> (Int32, Int32, Int32)
+
+pub fn reduce_word(Array[Int32]) -> Array[Int32]
+
+pub fn strict_two_group(Gp, Int32) -> WeakTwoGroup
+
+pub fn three_cocycles(Gp, Int32, Array[Array[Int32]], limit? : Int32) -> Array[Array[Array[Array[Int32]]]]
+
+pub fn transport_along(Array[Array[Int32]], Int32, Int32) -> Int32
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Globular {
+  dims : Array[Int32]
+  src : Array[Array[Int32]]
+  tgt : Array[Array[Int32]]
+}
+pub fn Globular::check(Self) -> Bool
+pub fn Globular::count(Self, Int32) -> Int32
+pub fn Globular::equal(Self, Self) -> Bool
+pub fn Globular::is_truncated(Self, Int32) -> Bool
+pub fn Globular::new(Array[Int32], Array[Array[Int32]], Array[Array[Int32]]) -> Self
+pub fn Globular::not_equal(Self, Self) -> Bool
+pub fn Globular::to_repr(Self) -> @debug.Repr
+pub fn Globular::top(Self) -> Int32
+
+#derive(Eq, @debug.Debug)
+pub struct Gp {
+  n : Int32
+  mul : Array[Array[Int32]]
+  e : Int32
+  inv : Array[Int32]
+}
+pub fn Gp::check(Self) -> Bool
+pub fn Gp::equal(Self, Self) -> Bool
+pub fn Gp::new(Array[Array[Int32]], Int32) -> Self
+pub fn Gp::not_equal(Self, Self) -> Bool
+pub fn Gp::op(Self, Int32, Int32) -> Int32
+pub fn Gp::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Graph {
+  nverts : Int32
+  edges : Array[(Int32, Int32)]
+}
+pub fn Graph::equal(Self, Self) -> Bool
+pub fn Graph::letter_ends(Self, Int32) -> (Int32, Int32)
+pub fn Graph::loops(Self, Int32, Int32) -> Array[Path1]
+pub fn Graph::nedges(Self) -> Int32
+pub fn Graph::new(Int32, Array[(Int32, Int32)]) -> Self
+pub fn Graph::not_equal(Self, Self) -> Bool
+pub fn Graph::path(Self, Int32, Array[Int32]) -> Path1?
+pub fn Graph::pi1_rank(Self, Int32) -> Int32
+pub fn Graph::spanning_tree(Self, Int32) -> Array[Int32]
+pub fn Graph::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Groupoid {
+  nobjs : Int32
+  ends : Array[(Int32, Int32)]
+  comp : Array[Array[Int32]]
+  ident : Array[Int32]
+}
+pub fn Groupoid::based_path_space(Self, Int32) -> Self
+pub fn Groupoid::check(Self) -> Bool
+pub fn Groupoid::check_j_beta(Self, Int32, Int32) -> Bool
+pub fn Groupoid::concat(Self, Int32, Int32) -> Int32?
+pub fn Groupoid::equal(Self, Self) -> Bool
+pub fn Groupoid::is_connected(Self) -> Bool
+pub fn Groupoid::is_contractible(Self) -> Bool
+pub fn Groupoid::is_set(Self) -> Bool
+pub fn Groupoid::new(Int32, Array[(Int32, Int32)], Array[Array[Int32]], Array[Int32]) -> Self
+pub fn Groupoid::nmors(Self) -> Int32
+pub fn Groupoid::not_equal(Self, Self) -> Bool
+pub fn Groupoid::path_induction(Self, Int32, Int32) -> Array[Int32]
+pub fn Groupoid::path_type(Self, Int32, Int32) -> Array[Int32]
+pub fn Groupoid::refl(Self, Int32) -> Int32
+pub fn Groupoid::sym(Self, Int32) -> Int32?
+pub fn Groupoid::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Path1 {
+  src : Int32
+  tgt : Int32
+  word : Array[Int32]
+}
+pub fn Path1::equal(Self, Self) -> Bool
+pub fn Path1::id(Int32) -> Self
+pub fn Path1::inverse(Self) -> Self
+pub fn Path1::length(Self) -> Int32
+pub fn Path1::not_equal(Self, Self) -> Bool
+pub fn Path1::then(Self, Self) -> Self?
+pub fn Path1::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct StrictOmega {
+  shape : Globular
+  comp : Array[Array[Array[Int32]]]
+  ident : Array[Array[Int32]]
+}
+pub fn StrictOmega::check_associative(Self) -> Bool
+pub fn StrictOmega::check_interchange(Self) -> Bool
+pub fn StrictOmega::check_inverses(Self) -> Bool
+pub fn StrictOmega::check_units(Self) -> Bool
+pub fn StrictOmega::composable(Self, Int32, Int32, Int32, Int32) -> Bool
+pub fn StrictOmega::compose(Self, Int32, Int32, Int32) -> Int32?
+pub fn StrictOmega::equal(Self, Self) -> Bool
+pub fn StrictOmega::new(Globular, Array[Array[Array[Int32]]], Array[Array[Int32]]) -> Self
+pub fn StrictOmega::not_equal(Self, Self) -> Bool
+pub fn StrictOmega::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct WeakTwoGroup {
+  g : Gp
+  m : Int32
+  action : Array[Array[Int32]]
+  alpha : Array[Array[Array[Int32]]]
+}
+pub fn WeakTwoGroup::check_action(Self) -> Bool
+pub fn WeakTwoGroup::coboundary(Self, Array[Array[Int32]]) -> Array[Array[Array[Int32]]]
+pub fn WeakTwoGroup::equal(Self, Self) -> Bool
+pub fn WeakTwoGroup::is_coherent(Self) -> Bool
+pub fn WeakTwoGroup::is_normalised(Self) -> Bool
+pub fn WeakTwoGroup::is_strictifiable(Self) -> Bool
+pub fn WeakTwoGroup::new(Gp, Int32, Array[Array[Int32]], Array[Array[Array[Int32]]]) -> Self
+pub fn WeakTwoGroup::not_equal(Self, Self) -> Bool
+pub fn WeakTwoGroup::pentagon_defects(Self) -> Int32
+pub fn WeakTwoGroup::regauge(Self, Array[Array[Int32]]) -> Self
+pub fn WeakTwoGroup::strictifying_cochain(Self) -> Array[Array[Int32]]?
+pub fn WeakTwoGroup::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
